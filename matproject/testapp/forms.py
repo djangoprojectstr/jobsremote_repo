@@ -23,23 +23,23 @@ class Studsform(forms.ModelForm):
         model=Matr
         fields=('fullname','phone','age','gender','caste','date_of_birth','location','comments','photo')
 
-class EditForm(forms.ModelForm):
-     template_name='/something/else'
+# class EditForm(forms.ModelForm):
+#      template_name='/something/else'
 
-     class Meta():
-        model = User
-        fields = ('username','password','email','first_name','last_name')
+#      class Meta():
+#         model = User
+#         fields = ('username','password','email','first_name','last_name')
 
-class Estudsform(forms.ModelForm):
-    template_name='/something/else'
-    class Meta():
-        model=Matr
-        fields=('fullname','phone','age','gender','caste','date_of_birth','location','comments','photo')
+# class Estudsform(forms.ModelForm):
+#     template_name='/something/else'
+#     class Meta():
+#         model=Matr
+#         fields=('fullname','phone','age','gender','caste','date_of_birth','location','comments','photo')
 
 
 
-class EmailSendForm(forms.Form):
-    name=forms.CharField()
-    email=forms.EmailField()
-    to=forms.EmailField()
-    comments=forms.CharField(required=False,widget=forms.Textarea)
+# class EmailSendForm(forms.Form):
+#     name=forms.CharField()
+#     email=forms.EmailField()
+#     to=forms.EmailField()
+#     comments=forms.CharField(required=False,widget=forms.Textarea)
