@@ -21,9 +21,9 @@ def homeview(request):
 
 
 
-@login_required
-def matchview(request):
-    return render(request,'testApp/match.html')
+# @login_required
+# def matchview(request):
+#     return render(request,'testApp/match.html')
 
 def logoutview(request):
     return render(request,'testApp/logout.html')
@@ -40,8 +40,8 @@ def depview(request):
 def subview(request):
     return render(request,'testApp/sub.html')
 
-def indexview(request):
-    return render(request,'testApp/index.html')
+# def indexview(request):
+#     return render(request,'testApp/index.html')
 
 def register(request):
     registered = False
@@ -73,80 +73,36 @@ def register(request):
 
 
 
-@login_required
-def view_profile(request, pk=None):
-    if pk:
-        user = User.objects.get(pk=pk)
-    else:
-        user = request.user
-    args = {'user': user}
-    return render(request, 'testApp/profile.html', args)
+# @login_required
+# def view_profile(request, pk=None):
+#     if pk:
+#         user = User.objects.get(pk=pk)
+#     else:
+#         user = request.user
+#     args = {'user': user}
+#     return render(request, 'testApp/profile.html', args)
 
 
 
 
 
 
-import datetime
-@login_required
-def wish(request):
-    date=datetime.datetime.now()
-    msg=None
-    h=int(date.strftime('%H'))
-    if h<12:
-        msg='!!!! Very Very Good Morning!!!'
-    elif h<16:
-        msg='!!!! Very Very Good AfterNoon!!!'
-    elif h<21:
-        msg='!!!! Very Very Good Evening!!!'
-    else:
-        msg='!!!! Very Very Good Night!!!'
-    my_dict={'insert_date':date,'insert_msg':msg}
-    return render(request,'testApp/profile.html',context=my_dict)
-
-
-
-
-
-
-
-
-
-
-
-@login_required
-def edit_profile(request):
-    if request.method == 'POST':
-        form = EditForm(request.POST, instance=request.user)
-        profile_form = Estudsform(request.POST, request.FILES, instance=request.user.matr)  # request.FILES is show the selected image or file
-
-        if form.is_valid() and profile_form.is_valid():
-            user_form = form.save()
-            custom_form = profile_form.save(False)
-            custom_form.user = user_form
-            custom_form.save()
-            return redirect('/accounts/login')
-    else:
-        form = EditForm(instance=request.user)
-        profile_form = Estudsform(instance=request.user.matr)
-        args = {}
-        # args.update(csrf(request))
-        args['form'] = form
-        args['profile_form'] = profile_form
-        return render(request, 'testapp/edit_profile.html', args)
-
-
-@login_required
-def fbkview(request):
-
-	if request.method == 'POST':
-		message = request.POST['message']
-		send_mail('Contact Form',
-		 message,
-		 settings.EMAIL_HOST_USER,
-		 ['python566775@gmail.com'],
-		 fail_silently=False)
-	return render(request, 'testapp/feedback.html')
+# import datetime
+# @login_required
+# def wish(request):
+#     date=datetime.datetime.now()
+#     msg=None
+#     h=int(date.strftime('%H'))
+#     if h<12:
+#         msg='!!!! Very Very Good Morning!!!'
+#     elif h<16:
+#         msg='!!!! Very Very Good AfterNoon!!!'
+#     elif h<21:
+#         msg='!!!! Very Very Good Evening!!!'
+#     else:
+#         msg='!!!! Very Very Good Night!!!'
+#     my_dict={'insert_date':date,'insert_msg':msg}
+#     return render(request,'testApp/profile.html',context=my_dict)
 
 
 
@@ -154,16 +110,60 @@ def fbkview(request):
 
 
 
-def index(request):
 
-	if request.method == 'POST':
-		message = request.POST['message']
-        # name = request.POST['name']
-        # email= request.POST['email']
 
-		send_mail('Contact Form',
-		 message,
-		 settings.EMAIL_HOST_USER,
-		 ['python566775@gmail.com'],
-		 fail_silently=False)
-	return render(request, 'testapp/home.html')
+
+
+# @login_required
+# def edit_profile(request):
+#     if request.method == 'POST':
+#         form = EditForm(request.POST, instance=request.user)
+#         profile_form = Estudsform(request.POST, request.FILES, instance=request.user.matr)  # request.FILES is show the selected image or file
+
+#         if form.is_valid() and profile_form.is_valid():
+#             user_form = form.save()
+#             custom_form = profile_form.save(False)
+#             custom_form.user = user_form
+#             custom_form.save()
+#             return redirect('/accounts/login')
+#     else:
+#         form = EditForm(instance=request.user)
+#         profile_form = Estudsform(instance=request.user.matr)
+#         args = {}
+#         # args.update(csrf(request))
+#         args['form'] = form
+#         args['profile_form'] = profile_form
+#         return render(request, 'testapp/edit_profile.html', args)
+
+
+# @login_required
+# def fbkview(request):
+
+# 	if request.method == 'POST':
+# 		message = request.POST['message']
+# 		send_mail('Contact Form',
+# 		 message,
+# 		 settings.EMAIL_HOST_USER,
+# 		 ['python566775@gmail.com'],
+# 		 fail_silently=False)
+# 	return render(request, 'testapp/feedback.html')
+
+
+
+
+
+
+
+# def index(request):
+
+# 	if request.method == 'POST':
+# 		message = request.POST['message']
+#         # name = request.POST['name']
+#         # email= request.POST['email']
+
+# 		send_mail('Contact Form',
+# 		 message,
+# 		 settings.EMAIL_HOST_USER,
+# 		 ['python566775@gmail.com'],
+# 		 fail_silently=False)
+# 	return render(request, 'testapp/home.html')
