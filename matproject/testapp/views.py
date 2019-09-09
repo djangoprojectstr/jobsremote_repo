@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 # from django.core.files.storage import FileSystemStorage
-from testapp.forms import UserForm,Studsform,EditForm,Estudsform
+from testapp.forms import UserForm,Studsform
 # from testapp.forms import EditForm,Estudsform
 from django.core.mail import send_mail
 from django.conf import settings
